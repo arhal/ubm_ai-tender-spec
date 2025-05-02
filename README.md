@@ -103,7 +103,7 @@ The module follows a sequential workflow, visually represented by the status ind
 
 1.  **Access:** User navigates to the `Tender` List and clicks "New".
 2.  **UI:** Display the form shown in 
-![New Tender Creation Form](tender2.jpg)
+![New Tender Creation Form](tender1.jpg)
 3.  **Fields:** User fills in `Tender Name`, `Client Name`, `Description` (Optional), `Due Date` (Optional).
 4.  **Action:** User clicks "Create Tender" (or ERPNext's standard "Save").
 5.  **System Action:**
