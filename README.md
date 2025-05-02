@@ -175,7 +175,7 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 6: Finalize Proposal**
 
 1.  **Access:** User proceeds from Step 5 or opens a `Tender` with `status` = `Finalized`.
-2.  **UI:** Display the view shown in `Figure: tender8.jpg`.
+2.  **UI:** Display the view shown in `Figure: ![Alt text](tender8.jpg)`.
 3.  **Content:**
     *   **Proposal Preview:** A read-only preview of the final `proposal_draft`.
     *   **Export Options:** Buttons/Cards for:
