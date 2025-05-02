@@ -29,7 +29,7 @@ This module aims to significantly reduce manual effort, improve the quality of t
 ## 3. Module & Doctype Design
 
 ### 3.1. New Doctype: `Tender`
-
+![Analysis Results and Upload Section](tender3.jpg)
 This Doctype will store all information related to a specific tender.
 
 **Fields:**
