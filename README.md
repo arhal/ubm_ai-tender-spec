@@ -29,7 +29,7 @@ This module aims to significantly reduce manual effort, improve the quality of t
 ## 3. Module & Doctype Design
 
 ### 3.1. New Doctype: `Tender`
-![Analysis Results and Upload Section](tender3.jpg)
+
 This Doctype will store all information related to a specific tender.
 
 **Fields:**
@@ -102,7 +102,8 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 1: Create New Tender**
 
 1.  **Access:** User navigates to the `Tender` List and clicks "New".
-2.  **UI:** Display the form shown in `Figure: tender2.jpg`.
+2.  **UI:** Display the form shown in 
+![New Tender Creation Form](tender2.jpg)
 3.  **Fields:** User fills in `Tender Name`, `Client Name`, `Description` (Optional), `Due Date` (Optional).
 4.  **Action:** User clicks "Create Tender" (or ERPNext's standard "Save").
 5.  **System Action:**
@@ -124,12 +125,13 @@ The module follows a sequential workflow, visually represented by the status ind
     *   **Trigger AI Analysis:** Initiate the AI analysis process (See Section 5: AI Integration). This should be a background job.
 
 **Step 3: AI Analysis & Review**
-
+![AI Analysis Results and Upload Section](tender3.jpg)
 1.  **System Action (Background):** The AI process fetches the attached documents, performs analysis, and sends back the results.
 2.  **System Action (On Completion):**
     *   Update the `Tender` record fields with the extracted data received from the AI (Project Scope, Key Dates, Evaluation Criteria, Risk Factors, AI Recommendation, etc.).
     *   Change `status` to `Analysis Complete`.
     *   Notify the user (optional).
+
 3.  **UI:** The `Tender` page now displays the populated "Analysis Results" section (`Figure: tender3.jpg`). The "AI Recommendation" section shows the Go/No-Go verdict, confidence, and key factors.
 4.  **Decision Point:** Two buttons are presented:
     *   `Proceed (Go)`
@@ -142,13 +144,17 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 4: Strategy & Quotation**
 
 1.  **Access:** User proceeds from Step 3 (Go) or opens a `Tender` with `status` = `Strategy`.
-2.  **UI:** Display the view shown in `Figure: tender4.jpg` and `Figure: tender5.jpg`.
+2.  **UI:** Display the view shown in
+![AI Suggested Strategies Section](tender4.jpg) 
+ and 
+![Quote Builder with Items](tender5.jpg)
+
 3.  **Content:**
     *   **AI-Suggested Winning Strategies:** Display the `ai_suggested_strategies` field content (read-only).
     *   **Quote Builder:** Display the `quote_items` child table.
 4.  **Actions (Quote Builder):**
     *   User clicks "+ Add First Item" / "+ Add Item".
-    *   A dialog appears (`Figure: tender6.jpg`) to enter `Description`, `Quantity`, `Unit Price`.
+    *   A dialog appears ![Add Quote Item Dialog](tender6.jpg) to enter `Description`, `Quantity`, `Unit Price`.
     *   Clicking "Add Item" in the dialog adds a row to the `quote_items` table and updates the `total_quote_value`.
     *   Users can edit/delete quote items.
 5.  **Action:** User clicks "Continue to Proposal".
@@ -157,7 +163,8 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 5: Proposal Generation & Editing**
 
 1.  **Access:** User proceeds from Step 4 or opens a `Tender` with `status` = `Proposal`.
-2.  **UI:** Display the view shown in `Figure: tender7.jpg`.
+2.  **UI:** Display the view shown below.
+![Proposal Draft Editor and Boilerplate](tender7.jpg)
 3.  **Content:**
     *   **Proposal Editor:** A rich text editor displaying the content of the `proposal_draft` field.
     *   **Boilerplate Text:** A section listing available boilerplate text snippets (from `Tender Boilerplate` child table or a separate linked Doctype). Each snippet has an "Insert" button.
@@ -175,7 +182,8 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 6: Finalize Proposal**
 
 1.  **Access:** User proceeds from Step 5 or opens a `Tender` with `status` = `Finalized`.
-2.  **UI:** Display the view shown in `Figure: ![Alt text](tender8.jpg)`.
+2.  **UI:** Display the view shown below.
+![Finalize Proposal Export Options](tender8.jpg)
 3.  **Content:**
     *   **Proposal Preview:** A read-only preview of the final `proposal_draft`.
     *   **Export Options:** Buttons/Cards for:
