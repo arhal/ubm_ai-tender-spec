@@ -36,10 +36,10 @@ This Doctype will store all information related to a specific tender.
 
 | Field Name                 | Type           | Description                                                                 | Notes / UI Reference                  |
 | :------------------------- | :------------- | :-------------------------------------------------------------------------- | :------------------------------------ |
-| `tender_name`              | Data           | **Mandatory.** Name of the tender (e.g., "City Hospital Expansion Project").    | Figure: tender2.jpg                   |
-| `client_name`              | Link           | **Mandatory.** Link to the Customer Doctype.                                | Figure: tender2.jpg                   |
-| `description`              | Text Editor    | Optional brief description of the tender.                                     | Figure: tender2.jpg                   |
-| `due_date`                 | Date           | Optional overall due date for the tender response.                           | Figure: tender2.jpg                   |
+| `tender_name`              | Data           | **Mandatory.** Name of the tender (e.g., "City Hospital Expansion Project").    | Figure: tender1.jpg                   |
+| `client_name`              | Link           | **Mandatory.** Link to the Customer Doctype.                                | Figure: tender1.jpg                   |
+| `description`              | Text Editor    | Optional brief description of the tender.                                     | Figure: tender1.jpg                   |
+| `due_date`                 | Date           | Optional overall due date for the tender response.                           | Figure: tender1.jpg                   |
 | `created_by_user`        | Link (User)    | Automatically set to the user creating the tender. Read Only.               | User request                          |
 | `status`                   | Select         | Current stage of the tender. Options: `New`, `Analyzing`, `Analysis Complete`, `Strategy`, `Proposal`, `Finalized`, `No-Go`. Default: `New`. | Controls workflow progression.      |
 | ---                        | Section Break  | **AI Analysis Results** (Populated by AI)                                   | Figure: tender3.jpg                   |
@@ -62,7 +62,7 @@ This Doctype will store all information related to a specific tender.
 | ---                        | Section Break  | **Strategy & Quotation**                                                    | Figure: tender4.jpg                   |
 | `ai_suggested_strategies`  | Text Editor    | AI-generated winning strategies. Read Only display.                         |                                       |
 | `quote_items`              | Table          | Child table for building the quote. Link to `Tender Quote Item`.            | Figure: tender5.jpg                   |
-| `total_quote_value`        | Currency       | Calculated total value from `quote_items`. Read Only.                       | Figure: tender5.jpg                   |
+| `total_quote_value`        | Currency       | Calculated total value from `quote_items`. Read Only.                       | Figure: tender6.jpg                   |
 | ---                        | Section Break  | **Proposal**                                                              | Figure: tender7.jpg                   |
 | `proposal_draft`           | Text Editor    | Draft of the proposal, can be AI-generated and manually edited.             |                                       |
 | `proposal_boilerplate`     | Table          | Child Table (`Tender Boilerplate`) for standard text snippets.            | Figure: tender7.jpg (Boilerplate Text)|
@@ -79,10 +79,10 @@ Used within the `Tender` Doctype for the `quote_items` table.
 
 | Field Name    | Type     | Description                       | Notes / UI Reference |
 | :------------ | :------- | :-------------------------------- | :------------------- |
-| `description` | Data     | Item/Service Description.       | Figure: tender6.jpg  |
-| `quantity`    | Float    | Quantity of the item/service.   | Figure: tender6.jpg  |
-| `unit_price`  | Currency | Price per unit.                 | Figure: tender6.jpg  |
-| `total`       | Currency | Calculated: `quantity` * `unit_price`. Read Only. | Figure: tender5.jpg  |
+| `description` | Data     | Item/Service Description.       | Figure: tender5.jpg  |
+| `quantity`    | Float    | Quantity of the item/service.   | Figure: tender5.jpg  |
+| `unit_price`  | Currency | Price per unit.                 | Figure: tender5.jpg  |
+| `total`       | Currency | Calculated: `quantity` * `unit_price`. Read Only. | Figure: tender6.jpg  |
 
 ### 3.3. New Child Doctype: `Tender Boilerplate` (Optional but Recommended)
 
@@ -111,16 +111,19 @@ The module follows a sequential workflow, visually represented by the status ind
     *   `created_by_user` is set automatically.
     *   `status` is set to `New`.
     *   The user is redirected to the main Tender page
-![Upload Tenders](tender2.jpg)
 
 **Step 2: Upload Documents**
 
 1.  **Access:** User opens an existing `Tender` record (Status: `New`).
-2.  **UI:** The page displays sections similar to `Figure: tender2.jpg`. The "Upload Documents" section is prominent.
-3.  **Action:** User drags & drops or browses to upload relevant tender files (PDF, DOCX, XLSX, images, etc.). These files become standard attachments to the `Tender` doctype.
-4.  **UI:** Uploaded documents are listed below the upload area (`Figure: tender2.jpg` - "Uploaded Documents").
-5.  **Action:** Once documents are uploaded, the user clicks the "Start AI Analysis" button.
-6.  **System Action:**
+2.  **UI:** The page displays sections similar to
+
+![Upload Tenders](tender2.jpg)
+
+4.  The "Upload Documents" section is prominent.
+5.  **Action:** User drags & drops or browses to upload relevant tender files (PDF, DOCX, XLSX, images, etc.). These files become standard attachments to the `Tender` doctype.
+6.  **UI:** Uploaded documents are listed below the upload area (`Figure: tender2.jpg` - "Uploaded Documents").
+7.  **Action:** Once documents are uploaded, the user clicks the "Start AI Analysis" button.
+8.  **System Action:**
     *   Change `status` to `Analyzing`.
     *   Display a loading indicator to the user.
     *   **Trigger AI Analysis:** Initiate the AI analysis process (See Section 5: AI Integration). This should be a background job.
