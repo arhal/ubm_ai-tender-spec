@@ -110,14 +110,15 @@ The module follows a sequential workflow, visually represented by the status ind
     *   A new `Tender` record is created.
     *   `created_by_user` is set automatically.
     *   `status` is set to `New`.
-    *   The user is redirected to the main Tender page (`Figure: tender3.jpg` view, initially without analysis results).
+    *   The user is redirected to the main Tender page
+![Upload Tenders](tender2.jpg)
 
 **Step 2: Upload Documents**
 
 1.  **Access:** User opens an existing `Tender` record (Status: `New`).
-2.  **UI:** The page displays sections similar to `Figure: tender3.jpg`. The "Upload Documents" section is prominent.
+2.  **UI:** The page displays sections similar to `Figure: tender2.jpg`. The "Upload Documents" section is prominent.
 3.  **Action:** User drags & drops or browses to upload relevant tender files (PDF, DOCX, XLSX, images, etc.). These files become standard attachments to the `Tender` doctype.
-4.  **UI:** Uploaded documents are listed below the upload area (`Figure: tender3.jpg` - "Uploaded Documents").
+4.  **UI:** Uploaded documents are listed below the upload area (`Figure: tender2.jpg` - "Uploaded Documents").
 5.  **Action:** Once documents are uploaded, the user clicks the "Start AI Analysis" button.
 6.  **System Action:**
     *   Change `status` to `Analyzing`.
@@ -146,16 +147,20 @@ The module follows a sequential workflow, visually represented by the status ind
 1.  **Access:** User proceeds from Step 3 (Go) or opens a `Tender` with `status` = `Strategy`.
 2.  **UI:** Display the view shown in
 ![AI Suggested Strategies Section](tender4.jpg) 
- and 
-![Quote Builder with Items](tender5.jpg)
 
 3.  **Content:**
     *   **AI-Suggested Winning Strategies:** Display the `ai_suggested_strategies` field content (read-only).
     *   **Quote Builder:** Display the `quote_items` child table.
 4.  **Actions (Quote Builder):**
     *   User clicks "+ Add First Item" / "+ Add Item".
-    *   A dialog appears ![Add Quote Item Dialog](tender6.jpg) to enter `Description`, `Quantity`, `Unit Price`.
+    *   A dialog appears
+      
+ ![Add Quote Item Dialog](tender5.jpg)
+to enter `Description`, `Quantity`, `Unit Price`.
     *   Clicking "Add Item" in the dialog adds a row to the `quote_items` table and updates the `total_quote_value`.
+  
+![Quote Builder](tender6.jpg)
+
     *   Users can edit/delete quote items.
 5.  **Action:** User clicks "Continue to Proposal".
 6.  **System Action:** Change `status` to `Proposal`. Navigate the user to the Proposal view.
@@ -163,8 +168,10 @@ The module follows a sequential workflow, visually represented by the status ind
 **Step 5: Proposal Generation & Editing**
 
 1.  **Access:** User proceeds from Step 4 or opens a `Tender` with `status` = `Proposal`.
-2.  **UI:** Display the view shown below.
-![Proposal Draft Editor and Boilerplate](tender7.jpg)
+2.  **UI:** Display the view shown below:
+
+![Proposal Draft Editor and Boilerplate](Tender7.jpg)
+
 3.  **Content:**
     *   **Proposal Editor:** A rich text editor displaying the content of the `proposal_draft` field.
     *   **Boilerplate Text:** A section listing available boilerplate text snippets (from `Tender Boilerplate` child table or a separate linked Doctype). Each snippet has an "Insert" button.
@@ -183,7 +190,9 @@ The module follows a sequential workflow, visually represented by the status ind
 
 1.  **Access:** User proceeds from Step 5 or opens a `Tender` with `status` = `Finalized`.
 2.  **UI:** Display the view shown below.
+
 ![Finalize Proposal Export Options](tender8.jpg)
+
 3.  **Content:**
     *   **Proposal Preview:** A read-only preview of the final `proposal_draft`.
     *   **Export Options:** Buttons/Cards for:
